@@ -47,8 +47,9 @@
     "express": "4.x.x",
     "lodash": "3.x.x",
     "method-override": "2.x.x",
+    "p2": "^0.6.1",
     "phaser-debug": "1.x.x",
     "phaser-tiled": "^1.4.1",
-    "pixi.js": "3.x.x"
+    "pixi.js": "2.x.x"
   }
 }
