@@ -1,7 +1,7 @@
 {
   "name": "phaser-levelgenerator-example ",
   "description": "A level generator written initially for Phaser using a BSP being ported to Phaser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/the-simian/phaser-levelgenerator-example",
   "author": {
     "name": "Jesse Harlin",
@@ -40,7 +40,7 @@
     "plato": "1.x.x",
     "webpack": "^1.7.3",
     "webpack-dev-server": "^1.7.0",
-    "p2": "^0.6.1",
+    "p2": "0.x.x",
     "phaser-debug": "1.x.x",
     "pixi.js": "2.x.x"
   },

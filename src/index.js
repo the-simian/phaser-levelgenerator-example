@@ -7,5 +7,8 @@ var states = require('./states');
 
 
 
+
+
+
 game.state.start('boot');
 
