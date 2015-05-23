@@ -88467,6 +88467,56 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// Export p2 classes
+	module.exports = {
+	    AABB :                          __webpack_require__(8),
+	    AngleLockEquation :             __webpack_require__(9),
+	    Body :                          __webpack_require__(10),
+	    Broadphase :                    __webpack_require__(11),
+	    Capsule :                       __webpack_require__(12),
+	    Circle :                        __webpack_require__(13),
+	    Constraint :                    __webpack_require__(14),
+	    ContactEquation :               __webpack_require__(15),
+	    ContactMaterial :               __webpack_require__(16),
+	    Convex :                        __webpack_require__(17),
+	    DistanceConstraint :            __webpack_require__(18),
+	    Equation :                      __webpack_require__(19),
+	    EventEmitter :                  __webpack_require__(20),
+	    FrictionEquation :              __webpack_require__(21),
+	    GearConstraint :                __webpack_require__(22),
+	    GridBroadphase :                __webpack_require__(23),
+	    GSSolver :                      __webpack_require__(24),
+	    Heightfield :                   __webpack_require__(25),
+	    Line :                          __webpack_require__(26),
+	    LockConstraint :                __webpack_require__(27),
+	    Material :                      __webpack_require__(28),
+	    Narrowphase :                   __webpack_require__(29),
+	    NaiveBroadphase :               __webpack_require__(30),
+	    Particle :                      __webpack_require__(1),
+	    Plane :                         __webpack_require__(32),
+	    RevoluteConstraint :            __webpack_require__(33),
+	    PrismaticConstraint :           __webpack_require__(34),
+	    Ray :                           __webpack_require__(35),
+	    RaycastResult :                 __webpack_require__(36),
+	    Rectangle :                     __webpack_require__(37),
+	    RotationalVelocityEquation :    __webpack_require__(38),
+	    SAPBroadphase :                 __webpack_require__(39),
+	    Shape :                         __webpack_require__(40),
+	    Solver :                        __webpack_require__(41),
+	    Spring :                        __webpack_require__(42),
+	    LinearSpring :                  __webpack_require__(43),
+	    RotationalSpring :              __webpack_require__(44),
+	    Utils :                         __webpack_require__(45),
+	    World :                         __webpack_require__(46),
+	    vec2 :                          __webpack_require__(47),
+	    version :                       __webpack_require__(49).version,
+	};
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
 	 * @license
 	 * pixi.js - v2.2.9
@@ -108847,56 +108897,6 @@
 	}).call(this);
 
 /***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Export p2 classes
-	module.exports = {
-	    AABB :                          __webpack_require__(8),
-	    AngleLockEquation :             __webpack_require__(9),
-	    Body :                          __webpack_require__(10),
-	    Broadphase :                    __webpack_require__(11),
-	    Capsule :                       __webpack_require__(12),
-	    Circle :                        __webpack_require__(13),
-	    Constraint :                    __webpack_require__(14),
-	    ContactEquation :               __webpack_require__(15),
-	    ContactMaterial :               __webpack_require__(16),
-	    Convex :                        __webpack_require__(17),
-	    DistanceConstraint :            __webpack_require__(18),
-	    Equation :                      __webpack_require__(19),
-	    EventEmitter :                  __webpack_require__(20),
-	    FrictionEquation :              __webpack_require__(21),
-	    GearConstraint :                __webpack_require__(22),
-	    GridBroadphase :                __webpack_require__(23),
-	    GSSolver :                      __webpack_require__(24),
-	    Heightfield :                   __webpack_require__(25),
-	    Line :                          __webpack_require__(26),
-	    LockConstraint :                __webpack_require__(27),
-	    Material :                      __webpack_require__(28),
-	    Narrowphase :                   __webpack_require__(29),
-	    NaiveBroadphase :               __webpack_require__(30),
-	    Particle :                      __webpack_require__(1),
-	    Plane :                         __webpack_require__(32),
-	    RevoluteConstraint :            __webpack_require__(33),
-	    PrismaticConstraint :           __webpack_require__(34),
-	    Ray :                           __webpack_require__(35),
-	    RaycastResult :                 __webpack_require__(36),
-	    Rectangle :                     __webpack_require__(37),
-	    RotationalVelocityEquation :    __webpack_require__(38),
-	    SAPBroadphase :                 __webpack_require__(39),
-	    Shape :                         __webpack_require__(40),
-	    Solver :                        __webpack_require__(41),
-	    Spring :                        __webpack_require__(42),
-	    LinearSpring :                  __webpack_require__(43),
-	    RotationalSpring :              __webpack_require__(44),
-	    Utils :                         __webpack_require__(45),
-	    World :                         __webpack_require__(46),
-	    vec2 :                          __webpack_require__(47),
-	    version :                       __webpack_require__(49).version,
-	};
-
-
-/***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -115471,8 +115471,8 @@
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {global.PIXI = __webpack_require__(5);
-	global.p2 = __webpack_require__(6);
+	/* WEBPACK VAR INJECTION */(function(global) {global.PIXI = __webpack_require__(6);
+	global.p2 = __webpack_require__(5);
 	global.Phaser = __webpack_require__(4);
 	
 	

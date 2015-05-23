@@ -4,9 +4,7 @@ var path = require('path');
 
 var phaserModule = path.join(__dirname, '/node_modules/phaser/');
 
-var phaserWebpackLoader = path.join(__dirname, '/node_modules/phaser-shim-loader'),
-  phaserWebpackDebugLoader = path.join(__dirname, '/node_modules/phaser-shim-loader/phaser=debug'),
-  glFragmentLoader = path.join(__dirname, '/node_modules/phaser-glsl-loader'),
+var glFragmentLoader = path.join(__dirname, '/node_modules/phaser-glsl-loader'),
   jsonLoader = path.join(__dirname, '/node_modules/json-loader');
 
 var phaser = path.join(phaserModule, '/dist/phaser.js'),
@@ -23,7 +21,7 @@ module.exports = {
     hotUpdateMainFilename: '[hash]/update.json',
     hotUpdateChunkFilename: '[hash]/js/[id].update.js'
   },
-  //target: 'web',
+  target: 'web',
   module: {
     loaders: [
       {
