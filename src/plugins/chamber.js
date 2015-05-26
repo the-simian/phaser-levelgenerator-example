@@ -33,7 +33,7 @@ var old = {
 
     var leaves = [];
 
-    var populateNothingness = function () {
+    function populateNothingness() {
       var level = [];
       for (var i = 0; i < o.height; i++) {
         var tr = [];
@@ -43,9 +43,9 @@ var old = {
         level.push(tr);
       }
       return level;
-    };
+    }
 
-    var makeRoomSquare = function (node, tile) {
+    function makeRoomSquare(node, tile) {
       var height = node.h + node.y;
       var width = node.w + node.x;
       for (var i = node.y; i < height; i++) {
@@ -53,20 +53,21 @@ var old = {
           level[i][j] = tile || node.rgba;
         }
       }
-    };
+    }
 
-    var colorCentroid = function (node, tile) {
+    function colorCentroid(node, tile) {
       level[node.centroid.y][node.centroid.x] = tile;
-    };
+    }
 
-    var colorCorners = function (node, tile) {
+
+    function colorCorners(node, tile) {
       level[node.corner.tl.y][node.corner.tl.x] = tile;
       level[node.corner.tr.y][node.corner.tr.x] = tile;
       level[node.corner.bl.y][node.corner.bl.x] = tile;
       level[node.corner.br.y][node.corner.br.x] = tile;
-    };
+    }
 
-    var processLeaf = function (node) {
+    function processLeaf(node) {
       var count = 0;
       do {
 
@@ -113,26 +114,27 @@ var old = {
       };
 
       leaves.push(node);
-    };
+    }
 
     var level = populateNothingness();
-    var getRandomColor = function () {
+
+    function getRandomColor() {
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
       var b = Math.floor(Math.random() * 255);
       return 'rgba(' + r + ',' + g + ',' + b + ', 0.4)';
-    };
+    }
 
-    var getConstrainedRandomNumber = function (seed) {
+    function getConstrainedRandomNumber(seed) {
       var num = Math.floor(Math.random() * (seed));
       if ((num >= o.minSubdivideAmt) && (num <= (seed - o.minSubdivideAmt))) {
         return num;
       }
       return getConstrainedRandomNumber(seed);
-    };
+    }
 
     //can replace with different subdivisions
-    var bisectNode = function (_divDir, _parent, _depth) {
+    function bisectNode(_divDir, _parent, _depth) {
       var children = [];
 
       var startx = _parent.x;
@@ -180,7 +182,7 @@ var old = {
         });
       }
       return children;
-    };
+    }
 
     var parentmostNode = {};
 
@@ -194,15 +196,18 @@ var old = {
         rgba: getRandomColor()
       });
 
-      var height = pheight;
-      var generateLeaf = function (node, height) {
+
+      function generateLeaf(node, height) {
 
         if (height === 0 || node.w <= o.minParentWidth || node.h <= o.minParentWidth) {
           processLeaf(node);
           return node;
         }
+
         var temp = node;
+
         var childLength = temp.children ? temp.children.length : 0;
+
         if (!childLength) {
           temp.children = bisectNode(height % 2, temp);
           generateLeaf(temp, height);
@@ -210,7 +215,8 @@ var old = {
         for (var i = 0; i < childLength; i++) {
           generateLeaf(temp.children[i], height - 1);
         }
-      };
+      }
+
       generateLeaf(pnode, pheight);
       return pnode;
     }
@@ -218,8 +224,9 @@ var old = {
     var depth = o.divisions;
     var tree = generateTree(parentmostNode, depth);
 
-    var traverseTree = function (_tree, singleCallback, batchCallback, d) {
-      var traverseLeaf = function (node, dep) {
+    function traverseTree(_tree, singleCallback, batchCallback, d) {
+      
+      function traverseLeaf(node, dep) {
         singleCallback.call(this, node, dep);
 
         var childLength = node.children ? node.children.length : 0;
@@ -232,12 +239,12 @@ var old = {
           }
           batchCallback.call(this, batch);
         }
-      };
+      }
 
       traverseLeaf(tree, d);
-    };
+    }
 
-    var singleCallback = function (node, d) {
+   function singleCallback(node, d) {
 
       if (!node.subspace) {
         //console.log('parent', d, node);
@@ -250,9 +257,9 @@ var old = {
           colorCorners(node.subspace, o.voidTile);
         }
       }
-    };
+    }
 
-    var drawRightAngle = function (x1, x2, y1, y2, c) {
+    function drawRightAngle(x1, x2, y1, y2, c) {
 
       var thickness = Math.floor(Math.random() * o.pathThickness[1]) + o.pathThickness[0];
 
@@ -283,9 +290,9 @@ var old = {
           }
         }
       }
-    };
+    }
 
-    var batchCallback = function (children) {
+    function batchCallback(children) {
 
       while (children[0].children) {
         children[0] = children[0].children[Math.floor(Math.random() * 2)];
@@ -306,12 +313,11 @@ var old = {
         drawRightAngle(x0, x1, y0, y1, c0);
 
       }
-
-    };
+    }
 
     traverseTree(tree, singleCallback, batchCallback, depth);
 
-    var processLevel = function (l, callback) {
+    function processLevel(l, callback) {
       var Levellength = l.length;
       for (var i = 0; i < Levellength; i++) {
         var rowLength = l[i].length;
@@ -376,9 +382,9 @@ var old = {
           callback(i, j, obj);
         }
       }
-    };
+    }
 
-    var generateWalls = function (c, x, y) {
+    function generateWalls(c, x, y) {
       var floor = o.floorTile;
       var blank = o.voidTile;
       var wall = o.wallTile;
@@ -395,9 +401,10 @@ var old = {
           level[x][y] = wall;
         }
       }
-    };
-
-    var modulateFloor = function (c, x, y) {
+    }
+    
+    //not being used, really - just experimenting wiht callback.
+    function modulateFloor(c, x, y) {
       var floor = o.floorTile;
       var blank = o.voidTile;
       var wall = o.wallTile;
@@ -407,15 +414,16 @@ var old = {
           level[x][y] = 6;
         }
       }
-    };
-
-    var cellcallback1 = function (x, y, cellmatrix) {
+    }
+    
+    //just experimenting with post processing.
+    function cellcallback1(x, y, cellmatrix) {
       generateWalls(cellmatrix, x, y);
-    };
+    }
 
-    var cellcallback2 = function (x, y, cellmatrix) {
+    function cellcallback2(x, y, cellmatrix) {
       modulateFloor(cellmatrix, x, y);
-    };
+    }
 
     processLevel(level, cellcallback1);
     return level;
